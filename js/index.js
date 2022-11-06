@@ -12,7 +12,6 @@ for(i=0; i<14; i++){
     const tumo = yamahai.splice(r,1);
     haipai.push(Number(tumo));
 }
-console.log(haipai);
 // バブルソート（リーパイ）
 function bsort(array){
     for(let i=0; i<13; i++){
@@ -24,6 +23,7 @@ function bsort(array){
     }return array;
 }
 console.log(bsort(haipai))
-// for(i=0; i<14; i++){
-
-// }
+// 画僧の出力
+for(i=0; i<14; i++){
+    $('#tehai_' + i).append('<img src="./img/'+ bsort(haipai)[i] +'.png">')
+}
