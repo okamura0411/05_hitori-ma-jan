@@ -28,7 +28,7 @@ body::after{
 }
 #tehai{
     position: fixed;
-    bottom: 3%;
+    bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
     min-width: 900px;
@@ -38,8 +38,9 @@ body::after{
     justify-content: center;
 }
 .tehai_item,.tehai_item img{
-    width: 107%;
+    width: 108%;
+    height: 109%;
 }
-#tumo{
+#tehai_13{
     margin-left: 3%;
 }
