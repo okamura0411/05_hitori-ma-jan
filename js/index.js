@@ -9,7 +9,7 @@ const yamahai = [ 1,  1,  1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 
 // 配牌
 for(i=0; i<14; i++){
     let r = Math.floor(Math.random()*yamahai.length);
-    const tumo = yamahai.splice(r,1);
+    const tumo = yamahai.splice(r,1); //配列データとして補完してくれる。
     haipai.push(Number(tumo));
 }
 // バブルソート（リーパイ）
@@ -22,8 +22,33 @@ function bsort(array){
         }
     }return array;
 }
-console.log(bsort(haipai))
 // 画僧の出力
 for(i=0; i<14; i++){
-    $('#tehai_' + i).append('<img src="./img/'+ bsort(haipai)[i] +'.png">')
+    $('#tehai_' + i).html('<img class="hai" src="./img/'+ bsort(haipai)[i] +'.png" name='+ i +'>')
 }
+
+// クリックイベント
+$(document).on("click",".hai",function(){
+    let n = $(this).attr('name');
+    $(this).appendTo("#sutehai");
+    $(this).empty();
+    haipai.splice(n,1)
+    // バブル
+    function bsort(array){
+        for(let i=0; i<13; i++){
+            for(x=0; x<12; x++){
+                if(array[x] > array[x+1]){
+                    [array[x],array[x+1]] = [array[x+1],array[x]];
+                }
+            }
+        }return array;
+    }
+
+    let r = Math.floor(Math.random()* yamahai.length);
+    const tumo = yamahai.splice(r,1); //配列データとして補完してくれる。
+    haipai.push(Number(tumo));
+    console.log(bsort(haipai));
+    for(i=0; i<14; i++){
+        $('#tehai_' + i).html('<img class="hai" src="./img/'+ bsort(haipai)[i] +'.png" name='+ i +'>')
+    }
+});
